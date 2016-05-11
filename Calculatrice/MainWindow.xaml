@@ -5,9 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Calculatrice"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="400" Width="300">
     <Grid>
-        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Margin="217,138,0,0" VerticalAlignment="Top" Width="75"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="4*"/>
+        </Grid.RowDefinitions>
 
+        <TextBox Name="outputDisplay" Text="0" IsReadOnly="True">
+            
+        </TextBox>
+        
+        <!--<Button x:Name="button" Content="5" Style="{StaticResource BlackGradientButton}"/>-->
     </Grid>
 </Window>

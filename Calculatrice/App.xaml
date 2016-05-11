@@ -4,15 +4,27 @@
              xmlns:local="clr-namespace:Calculatrice"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
+        <!-- BUTTONS -->
         <Style TargetType="Button" x:Key="BaseButton">
             <Setter Property="Width" Value="40"/>
             <Setter Property="Height" Value="40"/>
             <Setter Property="Foreground" Value="White"/>
         </Style>
-        
         <Style TargetType="Button" BasedOn="{StaticResource BaseButton}"/>
 
-        <Style TargetType="Button" BasedOn="{StaticResource BaseButton}" x:Key="BlackGradientButton"/>
+        <Style TargetType="Button" BasedOn="{StaticResource BaseButton}" x:Key="BlackGradientButton">
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                        <GradientStop Color="#4c4c4c" Offset="0"/>
+                        <GradientStop Color="#131313" Offset="1"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        
+        <!-- TEXTBOXES -->
+        
 
 
     </Application.Resources>
