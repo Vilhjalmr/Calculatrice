@@ -28,6 +28,7 @@ namespace Calculatrice
         public MainWindow()
         {
             InitializeComponent();
+            Display.CaretIndex = 60;
         }
 
         private void UpdateDisplay(Button btn)

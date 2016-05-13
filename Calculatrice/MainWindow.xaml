@@ -27,7 +27,7 @@
         <Menu>
             <!--<MenuItem/>-->
         </Menu>
-        <TextBox Name="Display" Text="0" Grid.Row="1"  IsReadOnly="True" Style="{StaticResource CalculatorDisplay}" TextAlignment="Right"/>
+        <TextBox Name="Display" Text="0" Grid.Row="1" IsReadOnly="True" Style="{StaticResource CalculatorDisplay}" TextAlignment="Right"/>
         
         <Grid x:Name="SubGrid" Grid.Row="2" Margin="5">
             
