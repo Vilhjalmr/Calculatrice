@@ -24,6 +24,7 @@ namespace Calculatrice
         String Memory = "0";
         Boolean Done = false;
 
+
         public MainWindow()
         {
             InitializeComponent();
@@ -41,6 +42,9 @@ namespace Calculatrice
                 Display.Clear();
             }
             Display.Text += (String)btn.Content;
+            //Display.Focus();
+            //Display.CaretIndex = Display.Text.Length;
+            //Display.ScrollToEnd();
         }
 
         private void DisplayResult()
@@ -53,7 +57,7 @@ namespace Calculatrice
         }
 
         /*
-         * Following methods implements behaviour of the 
+         * Following methods implement behaviour of the 
          * calculator's buttons when pressed
          */
 
@@ -144,7 +148,7 @@ namespace Calculatrice
                 Display.Text = Display.Text + "+" + Memory;
                 DisplayResult();
             }
-            
+
         }
 
         private void btnMminus_Click(object sender, RoutedEventArgs e)
@@ -240,12 +244,25 @@ namespace Calculatrice
             {
                 DisplayResult();
             }
-            
-            if (e.Key == Key.C)
+
+            if (e.Key == Key.C || e.Key == Key.Delete)
             {
                 btnC_Click(sender, e);
             }
-        }
 
+            if (e.Key == Key.Back)
+            {
+                try
+                {
+                    Display.Text = Display.Text.Remove(Display.Text.Length - 1, 1);
+                    // Other possibility
+                    // Display.Text = Display.Text.Substring(0, Display.Text.Length - 1);
+                }
+                catch
+                {
+
+                }
+            }
+        }
     }
 }

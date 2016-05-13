@@ -12,7 +12,11 @@
         
     </Window.Resources>
     
-    <Grid  Background="Black">
+    <Window.InputBindings>
+        <KeyBinding Command="{Binding CommandToRun}" Key="Delete" />
+    </Window.InputBindings>
+    
+    <Grid x:Name="MainGrid" Background="Black">
         
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -23,9 +27,9 @@
         <Menu>
             <!--<MenuItem/>-->
         </Menu>
-        <TextBox Name="Display" Text="0" Grid.Row="1"  IsReadOnly="True" Style="{StaticResource CalculatorDisplay}"/>
+        <TextBox Name="Display" Text="0" Grid.Row="1"  IsReadOnly="True" Style="{StaticResource CalculatorDisplay}" TextAlignment="Right"/>
         
-        <Grid Grid.Row="2" Margin="5">
+        <Grid x:Name="SubGrid" Grid.Row="2" Margin="5">
             
             <Grid.RowDefinitions>
                 <RowDefinition/>
@@ -42,7 +46,7 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             
-            <!-- Transfer Margin to Style -->
+            
             <Button x:Name="btnMc"     Grid.Row="0" Grid.Column="0" Style="{StaticResource HersheysGradientButton}"   Content="mc"  Click="btnMc_Click"/>
             <Button x:Name="btnMplus"  Grid.Row="0" Grid.Column="1" Style="{StaticResource HersheysGradientButton}"   Content="m+"  Click="btnMplus_Click"/>
             <Button x:Name="btnMminus" Grid.Row="0" Grid.Column="2" Style="{StaticResource HersheysGradientButton}"   Content="m-"  Click="btnMminus_Click"/>
