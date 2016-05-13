@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Calculatrice"
         mc:Ignorable="d"
-        Title="Calculatrice" Height="400" Width="300"
+        Title="Calculatrice" Height="430" Width="300"
         KeyDown="Window_KeyDown">
 
     <Window.Resources>
@@ -15,13 +15,17 @@
     <Grid  Background="Black">
         
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="4*"/>
         </Grid.RowDefinitions>
 
-        <TextBox Name="Display" Text="0" Grid.Row="0"  IsReadOnly="True" Style="{StaticResource CalculatorDisplay}"/>
+        <Menu>
+            <!--<MenuItem/>-->
+        </Menu>
+        <TextBox Name="Display" Text="0" Grid.Row="1"  IsReadOnly="True" Style="{StaticResource CalculatorDisplay}"/>
         
-        <Grid Grid.Row="1" Margin="5">
+        <Grid Grid.Row="2" Margin="5">
             
             <Grid.RowDefinitions>
                 <RowDefinition/>
@@ -39,33 +43,33 @@
             </Grid.ColumnDefinitions>
             
             <!-- Transfer Margin to Style -->
-            <Button x:Name="btnMc"     Grid.Row="0" Grid.Column="0" Style="{StaticResource HersheysGradientButton}"   Margin="5"   Content="mc"  Click="btnMc_Click"/>
-            <Button x:Name="btnMplus"  Grid.Row="0" Grid.Column="1" Style="{StaticResource HersheysGradientButton}"   Margin="5"   Content="m+"  Click="btnMplus_Click"/>
-            <Button x:Name="btnMminus" Grid.Row="0" Grid.Column="2" Style="{StaticResource HersheysGradientButton}"   Margin="5"   Content="m-"  Click="btnMminus_Click"/>
-            <Button x:Name="btnMr"     Grid.Row="0" Grid.Column="3" Style="{StaticResource HersheysGradientButton}"   Margin="5"   Content="mr"  Click="btnMr_Click"/>
+            <Button x:Name="btnMc"     Grid.Row="0" Grid.Column="0" Style="{StaticResource HersheysGradientButton}"   Content="mc"  Click="btnMc_Click"/>
+            <Button x:Name="btnMplus"  Grid.Row="0" Grid.Column="1" Style="{StaticResource HersheysGradientButton}"   Content="m+"  Click="btnMplus_Click"/>
+            <Button x:Name="btnMminus" Grid.Row="0" Grid.Column="2" Style="{StaticResource HersheysGradientButton}"   Content="m-"  Click="btnMminus_Click"/>
+            <Button x:Name="btnMr"     Grid.Row="0" Grid.Column="3" Style="{StaticResource HersheysGradientButton}"   Content="mr"  Click="btnMr_Click"/>
 
-            <Button x:Name="btnC"      Grid.Row="1" Grid.Column="0" Style="{StaticResource PortraitGradientButton}"   Margin="5"   Content="c"  Click="btnC_Click"/>
-            <Button x:Name="btnNeg"    Grid.Row="1" Grid.Column="1" Style="{StaticResource PortraitGradientButton}"   Margin="5"   Content="+-" Click="btnNeg_Click"/>
-            <Button x:Name="btnDivide" Grid.Row="1" Grid.Column="2" Style="{StaticResource PortraitGradientButton}"   Margin="5"   Content="/"  Click="btnDivide_Click"/>
-            <Button x:Name="btnTime"   Grid.Row="1" Grid.Column="3" Style="{StaticResource PortraitGradientButton}"   Margin="5"   Content="*"  Click="btnTime_Click"/>
+            <Button x:Name="btnC"      Grid.Row="1" Grid.Column="0" Style="{StaticResource PortraitGradientButton}"   Content="c"  Click="btnC_Click"/>
+            <Button x:Name="btnNeg"    Grid.Row="1" Grid.Column="1" Style="{StaticResource PortraitGradientButton}"   Content="+-" Click="btnNeg_Click"/>
+            <Button x:Name="btnDivide" Grid.Row="1" Grid.Column="2" Style="{StaticResource PortraitGradientButton}"   Content="/"  Click="btnDivide_Click"/>
+            <Button x:Name="btnTime"   Grid.Row="1" Grid.Column="3" Style="{StaticResource PortraitGradientButton}"   Content="*"  Click="btnTime_Click"/>
 
-            <Button x:Name="btn7"      Grid.Row="2" Grid.Column="0" Style="{StaticResource BlackGradientButton}"      Margin="5"   Content="7"  Click="btn7_Click"/>
-            <Button x:Name="btn8"      Grid.Row="2" Grid.Column="1" Style="{StaticResource BlackGradientButton}"      Margin="5"   Content="8"  Click="btn8_Click"/>
-            <Button x:Name="btn9"      Grid.Row="2" Grid.Column="2" Style="{StaticResource BlackGradientButton}"      Margin="5"   Content="9"  Click="btn9_Click"/>
-            <Button x:Name="btnMinus"  Grid.Row="2" Grid.Column="3" Style="{StaticResource PortraitGradientButton}"   Margin="5"   Content="-"  Click="btnMinus_Click"/>
-                                                                                                                                                
-            <Button x:Name="btn4"      Grid.Row="3" Grid.Column="0" Style="{StaticResource BlackGradientButton}"      Margin="5"   Content="4"  Click="btn4_Click"/>
-            <Button x:Name="btn5"      Grid.Row="3" Grid.Column="1" Style="{StaticResource BlackGradientButton}"      Margin="5"   Content="5"  Click="btn5_Click"/>
-            <Button x:Name="btn6"      Grid.Row="3" Grid.Column="2" Style="{StaticResource BlackGradientButton}"      Margin="5"   Content="6"  Click="btn6_Click"/>
-            <Button x:Name="btnPlus"   Grid.Row="3" Grid.Column="3" Style="{StaticResource PortraitGradientButton}"   Margin="5"   Content="+"  Click="btnPlus_Click"/>
-                                                                                                                                                
-            <Button x:Name="btn1"      Grid.Row="4" Grid.Column="0" Style="{StaticResource BlackGradientButton}"      Margin="5"   Content="1"  Click="btn1_Click" />
-            <Button x:Name="btn2"      Grid.Row="4" Grid.Column="1" Style="{StaticResource BlackGradientButton}"      Margin="5"   Content="2"  Click="btn2_Click"/>
-            <Button x:Name="btn3"      Grid.Row="4" Grid.Column="2" Style="{StaticResource BlackGradientButton}"      Margin="5"   Content="3"  Click="btn3_Click"/>
-            <Button x:Name="btnEquals" Grid.Row="4" Grid.Column="3" Style="{StaticResource BackFutureGradientButton}" Margin="5"   Content="="  Click="btnEquals_Click"    Grid.RowSpan="2"/>
-                                                                                                                                                
-            <Button x:Name="btn0"      Grid.Row="5" Grid.Column="0" Style="{StaticResource BlackGradientButton}"      Margin="5"   Content="0"  Click="btn0_Click"         Grid.ColumnSpan="2"/>
-            <Button x:Name="btnComma"  Grid.Row="5" Grid.Column="2" Style="{StaticResource BlackGradientButton}"      Margin="5"   Content="."  Click="btnComma_Click"/>
+            <Button x:Name="btn7"      Grid.Row="2" Grid.Column="0" Style="{StaticResource BlackGradientButton}"      Content="7"  Click="btn7_Click"/>
+            <Button x:Name="btn8"      Grid.Row="2" Grid.Column="1" Style="{StaticResource BlackGradientButton}"      Content="8"  Click="btn8_Click"/>
+            <Button x:Name="btn9"      Grid.Row="2" Grid.Column="2" Style="{StaticResource BlackGradientButton}"      Content="9"  Click="btn9_Click"/>
+            <Button x:Name="btnMinus"  Grid.Row="2" Grid.Column="3" Style="{StaticResource PortraitGradientButton}"   Content="-"  Click="btnMinus_Click"/>
+                                                                                                                                   
+            <Button x:Name="btn4"      Grid.Row="3" Grid.Column="0" Style="{StaticResource BlackGradientButton}"      Content="4"  Click="btn4_Click"/>
+            <Button x:Name="btn5"      Grid.Row="3" Grid.Column="1" Style="{StaticResource BlackGradientButton}"      Content="5"  Click="btn5_Click"/>
+            <Button x:Name="btn6"      Grid.Row="3" Grid.Column="2" Style="{StaticResource BlackGradientButton}"      Content="6"  Click="btn6_Click"/>
+            <Button x:Name="btnPlus"   Grid.Row="3" Grid.Column="3" Style="{StaticResource PortraitGradientButton}"   Content="+"  Click="btnPlus_Click"/>
+                                                                                                                                   
+            <Button x:Name="btn1"      Grid.Row="4" Grid.Column="0" Style="{StaticResource BlackGradientButton}"      Content="1"  Click="btn1_Click" />
+            <Button x:Name="btn2"      Grid.Row="4" Grid.Column="1" Style="{StaticResource BlackGradientButton}"      Content="2"  Click="btn2_Click"/>
+            <Button x:Name="btn3"      Grid.Row="4" Grid.Column="2" Style="{StaticResource BlackGradientButton}"      Content="3"  Click="btn3_Click"/>
+            <Button x:Name="btnEquals" Grid.Row="4" Grid.Column="3" Style="{StaticResource BackFutureGradientButton}" Content="="  Click="btnEquals_Click"    Grid.RowSpan="2"/>
+                                                                                                                                   
+            <Button x:Name="btn0"      Grid.Row="5" Grid.Column="0" Style="{StaticResource BlackGradientButton}"      Content="0"  Click="btn0_Click"         Grid.ColumnSpan="2"/>
+            <Button x:Name="btnComma"  Grid.Row="5" Grid.Column="2" Style="{StaticResource BlackGradientButton}"      Content="."  Click="btnComma_Click"/>
 
         </Grid>
 

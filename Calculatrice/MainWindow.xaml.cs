@@ -21,26 +21,35 @@ namespace Calculatrice
     /// </summary>
     public partial class MainWindow : Window
     {
+        String Memory = "0";
+        Boolean Done = false;
+
         public MainWindow()
         {
             InitializeComponent();
-
         }
 
         private void UpdateDisplay(Button btn)
         {
+            if (Done)
+            {
+                Display.Clear();
+                Done = false;
+            }
             if (Display.Text == "0")
             {
                 Display.Clear();
             }
             Display.Text += (String)btn.Content;
         }
+
         private void DisplayResult()
         {
             // TODO: boolean indique qu'on est passé. Si on tape qqch est que ce bool est vrai, on remet à zéro
             string math = Display.Text;
             string value = new DataTable().Compute(math, null).ToString();
             Display.Text = value;
+            Done = true;
         }
 
         /*
@@ -120,22 +129,36 @@ namespace Calculatrice
 
         private void btnMc_Click(object sender, RoutedEventArgs e)
         {
-
+            Memory = "0";
         }
 
         private void btnMplus_Click(object sender, RoutedEventArgs e)
         {
-
+            if (Memory == "0")
+            {
+                Memory = Display.Text;
+                Done = true;
+            }
+            else
+            {
+                Display.Text = Display.Text + "+" + Memory;
+                DisplayResult();
+            }
+            
         }
 
         private void btnMminus_Click(object sender, RoutedEventArgs e)
         {
-
+            if (Memory != "0")
+            {
+                Display.Text = Display.Text + "-" + Memory;
+                DisplayResult();
+            }
         }
 
         private void btnMr_Click(object sender, RoutedEventArgs e)
         {
-
+            Display.Text = Memory;
         }
 
         private void btnC_Click(object sender, RoutedEventArgs e)
@@ -156,53 +179,53 @@ namespace Calculatrice
             // NUMBERS
             if (e.Key == Key.D0 || e.Key == Key.NumPad0)
             {
-                UpdateDisplay(btn0);
+                btn0_Click(sender, e);
             }
             if (e.Key == Key.D1 || e.Key == Key.NumPad1)
             {
-                UpdateDisplay(btn1);
+                btn1_Click(sender, e);
             }
             if (e.Key == Key.D2 || e.Key == Key.NumPad2)
             {
-                UpdateDisplay(btn2);
+                btn2_Click(sender, e);
             }
             if (e.Key == Key.D3 || e.Key == Key.NumPad3)
             {
-                UpdateDisplay(btn3);
+                btn3_Click(sender, e);
             }
             if (e.Key == Key.D4 || e.Key == Key.NumPad4)
             {
-                UpdateDisplay(btn4);
+                btn4_Click(sender, e);
             }
             if (e.Key == Key.D5 || e.Key == Key.NumPad5)
             {
-                UpdateDisplay(btn5);
+                btn5_Click(sender, e);
             }
             if (e.Key == Key.D6 || e.Key == Key.NumPad6)
             {
-                UpdateDisplay(btn6);
+                btn6_Click(sender, e);
             }
             if (e.Key == Key.D7 || e.Key == Key.NumPad7)
             {
-                UpdateDisplay(btn7);
+                btn7_Click(sender, e);
             }
             if (e.Key == Key.D8 || e.Key == Key.NumPad8)
             {
-                UpdateDisplay(btn8);
+                btn8_Click(sender, e);
             }
             if (e.Key == Key.D9 || e.Key == Key.NumPad9)
             {
-                UpdateDisplay(btn9);
+                btn9_Click(sender, e);
             }
 
             // OPERATORS
             if (e.Key == Key.Add || e.Key == Key.OemPlus)
             {
-                UpdateDisplay(btnPlus);
+                btnPlus_Click(sender, e);
             }
             if (e.Key == Key.Subtract || e.Key == Key.OemMinus)
             {
-                UpdateDisplay(btnMinus);
+                btnMinus_Click(sender, e);
             }
             if (e.Key == Key.Multiply)
             {
@@ -217,6 +240,12 @@ namespace Calculatrice
             {
                 DisplayResult();
             }
+            
+            if (e.Key == Key.C)
+            {
+                btnC_Click(sender, e);
+            }
         }
+
     }
 }
