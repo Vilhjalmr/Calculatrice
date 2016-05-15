@@ -159,6 +159,20 @@
         </Style>
 
         
+        <!-- TEXTBLOCKS -->
+        
+        <Style x:Key="TBDisplay" TargetType="TextBlock">
+            <Setter Property="TextAlignment" Value="Right"/>
+            <Setter Property="VerticalAlignment" Value="Stretch"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Background" Value="{StaticResource DecentGradient}"/>
+            <Setter Property="Padding" Value="0,0,10,0"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="TextTrimming" Value="CharacterEllipsis"/>
+
+        </Style>
+        
+        
     </Application.Resources>
     
 </Application>

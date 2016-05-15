@@ -22,27 +22,62 @@ namespace Calculatrice
     public partial class MainWindow : Window
     {
         String Memory = "0";
-        Boolean Done = false;
+        Boolean Started = false;
 
 
         public MainWindow()
         {
             InitializeComponent();
-            Display.CaretIndex = 60;
         }
 
         private void UpdateDisplay(Button btn)
         {
-            if (Done)
-            {
-                Display.Clear();
-                Done = false;
-            }
-            if (Display.Text == "0")
-            {
-                Display.Clear();
-            }
             Display.Text += (String)btn.Content;
+            Started = true;
+        }
+
+        private void CheckInput(Button btn)
+        {
+            if ((String)btn.Content == "0" && !Started)
+            {
+                // Don't do anything
+            }
+            else if ((String)btn.Content == "+" || 
+                     (String)btn.Content == "-" || 
+                     (String)btn.Content == "*" || 
+                     (String)btn.Content == "/" || 
+                     (String)btn.Content == "=" )
+            {
+                if (!Started)
+                {
+                    // Don't do anything
+                }
+                else
+                {
+                    UpdateDisplay(btn);
+                }
+            }
+            else
+            {
+                if ((String)Display.Text == "0")
+                {
+                    Display.Clear();
+                }
+                UpdateDisplay(btn);
+            }
+            
+            //if (Started)
+            //{
+            //    Display.Text = "0";
+            //    Started = false;
+            //}
+            //if (Display.Text == "0")
+            //{
+            //    Display.Text = "0";
+            //}
+            //Display.Text += (String)btn.Content;
+
+
             //Display.Focus();
             //Display.CaretIndex = Display.Text.Length;
             //Display.ScrollToEnd();
@@ -54,7 +89,7 @@ namespace Calculatrice
             string math = Display.Text;
             string value = new DataTable().Compute(math, null).ToString();
             Display.Text = value;
-            Done = true;
+            Started = true;
         }
 
         /*
@@ -65,61 +100,61 @@ namespace Calculatrice
         // NUMBERS
         private void btn0_Click(object sender, RoutedEventArgs e)
         {
-            UpdateDisplay(btn0);
+            CheckInput(btn0);
         }
         private void btn1_Click(object sender, RoutedEventArgs e)
         {
-            UpdateDisplay(btn1);
+            CheckInput(btn1);
         }
         private void btn2_Click(object sender, RoutedEventArgs e)
         {
-            UpdateDisplay(btn2);
+            CheckInput(btn2);
         }
         private void btn3_Click(object sender, RoutedEventArgs e)
         {
-            UpdateDisplay(btn3);
+            CheckInput(btn3);
         }
         private void btn4_Click(object sender, RoutedEventArgs e)
         {
-            UpdateDisplay(btn4);
+            CheckInput(btn4);
         }
         private void btn5_Click(object sender, RoutedEventArgs e)
         {
-            UpdateDisplay(btn5);
+            CheckInput(btn5);
         }
         private void btn6_Click(object sender, RoutedEventArgs e)
         {
-            UpdateDisplay(btn6);
+            CheckInput(btn6);
         }
         private void btn7_Click(object sender, RoutedEventArgs e)
         {
-            UpdateDisplay(btn7);
+            CheckInput(btn7);
         }
         private void btn8_Click(object sender, RoutedEventArgs e)
         {
-            UpdateDisplay(btn8);
+            CheckInput(btn8);
         }
         private void btn9_Click(object sender, RoutedEventArgs e)
         {
-            UpdateDisplay(btn9);
+            CheckInput(btn9);
         }
 
         // OPERATORS
         private void btnPlus_Click(object sender, RoutedEventArgs e)
         {
-            UpdateDisplay(btnPlus);
+            CheckInput(btnPlus);
         }
         private void btnMinus_Click(object sender, RoutedEventArgs e)
         {
-            UpdateDisplay(btnMinus);
+            CheckInput(btnMinus);
         }
         private void btnTime_Click(object sender, RoutedEventArgs e)
         {
-            UpdateDisplay(btnTime);
+            CheckInput(btnTime);
         }
         private void btnDivide_Click(object sender, RoutedEventArgs e)
         {
-            UpdateDisplay(btnDivide);
+            CheckInput(btnDivide);
         }
         private void btnEquals_Click(object sender, RoutedEventArgs e)
         {
@@ -129,7 +164,7 @@ namespace Calculatrice
 
         private void btnComma_Click(object sender, RoutedEventArgs e)
         {
-            UpdateDisplay(btnComma);
+            CheckInput(btnComma);
         }
 
         private void btnMc_Click(object sender, RoutedEventArgs e)
@@ -142,7 +177,7 @@ namespace Calculatrice
             if (Memory == "0")
             {
                 Memory = Display.Text;
-                Done = true;
+                Started = true;
             }
             else
             {
@@ -234,11 +269,11 @@ namespace Calculatrice
             }
             if (e.Key == Key.Multiply)
             {
-                UpdateDisplay(btnTime);
+                CheckInput(btnTime);
             }
             if (e.Key == Key.Divide)
             {
-                UpdateDisplay(btnDivide);
+                CheckInput(btnDivide);
             }
 
             if (e.Key == Key.Enter)
@@ -261,7 +296,8 @@ namespace Calculatrice
                 }
                 catch
                 {
-
+                    // Doesn't do anything. Avoids errors when trying to remove
+                    // last letter of an empty chain
                 }
             }
         }
